@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+            font-size: 20px;
+            padding:50px;
+        }
+       h1+button{
+            font-size: 30px;
+        }
+        button+button{
+            font-size: 30px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+    <button id="less">Dislike</button>
+    <button id="add">like</button>
+  </body>
+</html>
+
+<script>
+  var count = localStorage.getItem("total") || 0;
+
+    if (localStorage.getItem("total") == null) {
+      count = 0;
+    } else {
+      count = localStorage.getItem("total");
+    }
+
+  document.querySelector("h1").innerText = count;
+
+  document.querySelector("#less").addEventListener("click", lessFun);
+
+  function lessFun() {
+    count--;
+    document.querySelector("h1").innerText = count;
+    localStorage.setItem("total", count);
+  }
+
+  document.querySelector("#add").addEventListener("click", addFun);
+
+  function addFun() {
+    count++;
+    document.querySelector("h1").innerText = count;
+    localStorage.setItem("total", count);
+  }
+  </script>
